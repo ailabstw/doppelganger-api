@@ -86,4 +86,4 @@ curl -X POST -F "left=@宋芸樺.jpg" -F "right=@夏于喬.jpg" https://api.aila
 
 ## License
 
-
+MIT license
