@@ -17,12 +17,15 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
         CookieHandler.setDefault(manager);
 
         setContentView(R.layout.activity_main);
+
         mShareButton = findViewById(R.id.share_button);
         mShareButton.setVisibility(View.INVISIBLE);
         mShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mResultText.setFocusable(false);
                 File snapshot = takeScreenshot();
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
@@ -133,6 +138,13 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
         mScoreAlike.setVisibility(View.INVISIBLE);
 
         mResultText = findViewById(R.id.result_text);
+        mResultText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mResultText.setFocusableInTouchMode(true);
+                return false;
+            }
+        });
         mResultText.setVisibility(View.INVISIBLE);
 
         mStartTip = findViewById(R.id.start_tip);
@@ -310,6 +322,7 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
         startActivityForResult(intent, REQUEST_SELECT_PHOTO);
     }
 
+    private String mResultMessage = "";
     @Override
     public void onApiCompleted(String apiType, Object result) {
         if(apiType.equals(FaceApis.API_SEND_FACE_ANALYZE)) {
@@ -321,7 +334,27 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
                 json = new JSONObject(json_text);
                 final int score = json.optInt("result");
                 Log.i(TAG, "score = "+score);
-                final String message = json.optString("message");
+                mResultMessage = json.optString("message");
+                JSONObject left = json.optJSONObject("left");
+                JSONObject right = json.optJSONObject("right");
+                int noFace = 0;
+                if(left != null && left.optInt("face_count") == 0) {
+                    noFace += 1;
+                }
+                if(right != null && right.optInt("face_count") == 0) {
+                    noFace += 2;
+                }
+                switch(noFace) {
+                    case 1:
+                        mResultMessage = getResources().getString(R.string.left_no_face);
+                        break;
+                    case 2:
+                        mResultMessage = getResources().getString(R.string.right_no_face);
+                        break;
+                    case 3:
+                        mResultMessage = getResources().getString(R.string.both_no_face);
+                        break;
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -331,7 +364,8 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
                         mScoreAlike.setText(String.valueOf(score));
                         // make this description text editable and focus
                         mResultText.setVisibility(View.VISIBLE);
-                        mResultText.setText(message);
+                        mResultText.setText(mResultMessage);
+                        mResultText.setFocusable(true);
                         mResultText.requestFocus();
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.showSoftInput(mResultText, InputMethodManager.SHOW_IMPLICIT);
@@ -365,7 +399,6 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
             // create bitmap screen capture
             mPoweredText.setVisibility(View.VISIBLE);
             mPoweredIcon.setVisibility(View.VISIBLE);
-            mShareButton.requestFocus();
 
             mScreenShotArea.setDrawingCacheEnabled(true);
             Bitmap bitmap = Bitmap.createBitmap(mScreenShotArea.getDrawingCache());

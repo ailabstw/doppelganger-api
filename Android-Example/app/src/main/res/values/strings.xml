@@ -11,6 +11,9 @@
     <string name="powered_by_ailabs_text">撞臉度 由AILabs技術提供</string>
     <string name="share_to">分享到</string>
     <string name="privacy_terms_url">http://ailabs.tw/privacy/index.html</string>
+    <string name="left_no_face">左邊照片偵測不到臉</string>
+    <string name="right_no_face">右邊照片偵測不到臉</string>
+    <string name="both_no_face">兩邊照片偵測不到臉</string>
     <!-- stream type array -->
     <string-array name="photo_source_array">
         <item>相機</item>
