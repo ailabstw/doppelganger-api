@@ -21,8 +21,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
@@ -57,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
 
     private final static int PHOTO_FROM_CAMERA = 0;
     private final static int PHOTO_FROM_FILE = 1;
-    private final static int PHOTO_FROM_FACEBOOK = 2;
 
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int REQUEST_SELECT_PHOTO = 2;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
     private String mCurrentPhotoPath;
     private byte[][] mImageByteArray = new byte[2][];
     private ImageView[] mImageViews = new ImageView[2];
+    private ProgressBar mLoadingProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
                 }
             }
         });
+
+        mLoadingProgress = findViewById(R.id.loading_progress);
+        mLoadingProgress.setVisibility(View.INVISIBLE);
 
         mPoweredText = findViewById(R.id.powered_by_ailabs);
         mPoweredIcon = findViewById(R.id.powered_by_ailabs_icon);
@@ -204,6 +209,8 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
                 mImageByteArray[mCurrentSetPhoto] = IOUtils.toByteArray(fileInputStream);
 //                if(mImageByteArray[0] != null && mImageByteArray[1] != null)
                     FaceApis.getInstance(this).sendFaceAnalyze(mImageByteArray, mCurrentSetPhoto, this);
+                mLoadingProgress.setVisibility(View.VISIBLE);
+                mScoreAlike.setVisibility(View.INVISIBLE);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -216,6 +223,8 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
                 mImageByteArray[mCurrentSetPhoto] = IOUtils.toByteArray(getContentResolver().openInputStream(originalUri));
 //                if(mImageByteArray[0] != null && mImageByteArray[1] != null)
                     FaceApis.getInstance(this).sendFaceAnalyze(mImageByteArray, mCurrentSetPhoto, this);
+                mLoadingProgress.setVisibility(View.VISIBLE);
+                mScoreAlike.setVisibility(View.INVISIBLE);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -311,10 +320,12 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
             try {
                 json = new JSONObject(json_text);
                 final int score = json.optInt("result");
+                Log.i(TAG, "score = "+score);
                 final String message = json.optString("message");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mLoadingProgress.setVisibility(View.INVISIBLE);
                         mStartTip.setVisibility(View.INVISIBLE);
                         mScoreAlike.setVisibility(View.VISIBLE);
                         mScoreAlike.setText(String.valueOf(score));
@@ -335,8 +346,14 @@ public class MainActivity extends AppCompatActivity implements IFaceApiCallback 
     }
 
     @Override
-    public void onApiError(String apiType, VolleyError error) {
-
+    public void onApiError(String apiType, final VolleyError error) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mLoadingProgress.setVisibility(View.INVISIBLE);
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG);
+            }
+        });
     }
 
     private File takeScreenshot() {
