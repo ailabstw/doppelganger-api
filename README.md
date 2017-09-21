@@ -2,11 +2,14 @@
 
 你可以透過 RESTFul API 輕易地使用 AILabs 的演算法來取得不同相片中人臉的相似程度以及相關資訊。
 
+## Demo App 下載
+
+
 ## API 說明
 
 透過 `form-data` 的 POST 方式上傳兩張照片以取得結果，你也可以一次只上傳一張，等到兩張都上傳完成時便可收到比較的結果，一次上人傳一張的功能需要 enable `session-cookie`，server 會以 session 來紀錄你的身分與狀態。
 
-##API Endpoint 
+## API Endpoint 
 
 ```
 https://api.ailabs.tw/doppelganger/upload
@@ -21,7 +24,7 @@ https://api.ailabs.tw/doppelganger/upload
 
 **注意:** 目前只接受 `jpg` 與 `jpeg` 格式的圖片
 
-##Request Example 
+## Request Example 
 
 ```shell
 curl -X POST -F "left=@宋芸樺.jpg" -F "right=@夏于喬.jpg" https://api.ailabs.tw/doppelganger/upload
@@ -80,4 +83,7 @@ curl -X POST -F "left=@宋芸樺.jpg" -F "right=@夏于喬.jpg" https://api.aila
 ## 聯絡我們
 
 * 若有發現任何問題，歡迎發送 [issue](https://github.com/ailabstw/doppelganger-api/issues)
+
+## License
+
 
