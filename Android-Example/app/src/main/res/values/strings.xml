@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">撞臉度</string>
+    <string name="privacy_terms">AILabs軟體使用及隱私權條款</string>
+    <string name="share">分享</string>
+    <string name="send">分析</string>
+    <string name="pick_photo_source">照片來源</string>
+    <string name="start_tip">選擇兩張照片看看有多像？</string>
+    <string name="need_permission">需要權限進行比對</string>
+    <string name="app_save_path">doppelganger</string>
+    <string name="need_load_image">需要兩張照片才能進行分析</string>
+    <string name="powered_by_ailabs_text">撞臉度 由AILabs技術提供</string>
+    <string name="share_to">分享到</string>
+    <string name="privacy_terms_url">http://ailabs.tw/privacy/index.html</string>
+    <!-- stream type array -->
+    <string-array name="photo_source_array">
+        <item>相機</item>
+        <item>本機檔案</item>
+        <!--<item>Facebook相簿</item>-->
+    </string-array>
+</resources>
