@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JaK-93-gHD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangTC-Light</string>
+            <string>PingFangTC-Regular</string>
+            <string>PingFangTC-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="uOK-cX-Vqp">
+            <objects>
+                <navigationController id="JaK-93-gHD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C5a-qN-vbT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Hh-ep-2Jj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MaQ-hl-eGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-724" y="164"/>
+        </scene>
+        <!--撞臉度-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FaceLike" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuN-wL-FCO">
+                                <rect key="frame" x="40" y="550" width="296" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="RVU-ZX-rEY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <state key="normal" title="分享">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="share" destination="BYZ-38-t0r" eventType="touchUpInside" id="69V-HH-t5t"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6C-9O-d3O" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="369"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flash" translatesAutoresizingMaskIntoConstraints="NO" id="ALo-4F-Guj">
+                                        <rect key="frame" x="204" y="47" width="155" height="160"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="kgf-k2-Bgk"/>
+                                            <constraint firstAttribute="width" constant="155" id="pkN-aZ-wjh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="選擇兩張照片看看有多像" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nI2-Qz-zZx">
+                                        <rect key="frame" x="16" y="307" width="343" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="NNb-4k-rVn"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-wL-MFG">
+                                        <rect key="frame" x="145" y="215" width="85.5" height="84"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="84" id="6ki-jW-awR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="64"/>
+                                        <color key="textColor" name="point"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman" translatesAutoresizingMaskIntoConstraints="NO" id="L3h-ht-EU8">
+                                        <rect key="frame" x="16" y="47" width="155" height="160"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="cSs-q0-lJS"/>
+                                            <constraint firstAttribute="width" constant="155" id="vaD-wV-HH6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="L3h-ht-EU8" firstAttribute="leading" secondItem="s6C-9O-d3O" secondAttribute="leading" constant="16" id="4BL-2S-mCU"/>
+                                    <constraint firstItem="nI2-Qz-zZx" firstAttribute="leading" secondItem="s6C-9O-d3O" secondAttribute="leading" constant="16" id="EOW-PX-Oel"/>
+                                    <constraint firstItem="nI2-Qz-zZx" firstAttribute="top" secondItem="w9x-wL-MFG" secondAttribute="bottom" constant="8" id="JfG-uA-Ejk"/>
+                                    <constraint firstItem="w9x-wL-MFG" firstAttribute="centerX" secondItem="s6C-9O-d3O" secondAttribute="centerX" id="QF1-8m-QUQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ALo-4F-Guj" secondAttribute="trailing" constant="16" id="XLq-cO-LZj"/>
+                                    <constraint firstItem="nI2-Qz-zZx" firstAttribute="centerX" secondItem="s6C-9O-d3O" secondAttribute="centerX" id="Yy1-1Q-PsK"/>
+                                    <constraint firstItem="ALo-4F-Guj" firstAttribute="top" secondItem="s6C-9O-d3O" secondAttribute="top" constant="47" id="j2U-Iz-QGr"/>
+                                    <constraint firstAttribute="bottom" secondItem="nI2-Qz-zZx" secondAttribute="bottom" constant="12" id="kjR-dI-xex"/>
+                                    <constraint firstItem="L3h-ht-EU8" firstAttribute="top" secondItem="s6C-9O-d3O" secondAttribute="top" constant="47" id="vju-6m-Z56"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veq-xf-Gmc">
+                                <rect key="frame" x="130.5" y="603" width="114" height="29"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                                <state key="normal" title="AILabs 軟體使用條款">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="privacy" destination="BYZ-38-t0r" eventType="touchUpInside" id="uYe-CL-Hha"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NuN-wL-FCO" secondAttribute="trailing" constant="39" id="0av-4y-9O7"/>
+                            <constraint firstItem="s6C-9O-d3O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2qM-cl-GJk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s6C-9O-d3O" secondAttribute="bottom" constant="234" id="9Tr-iv-w4d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NuN-wL-FCO" secondAttribute="bottom" constant="72" id="JmQ-SH-XIL"/>
+                            <constraint firstItem="veq-xf-Gmc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="X11-TO-Rz3"/>
+                            <constraint firstItem="veq-xf-Gmc" firstAttribute="top" secondItem="NuN-wL-FCO" secondAttribute="bottom" constant="8" id="X1E-am-fv3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s6C-9O-d3O" secondAttribute="trailing" id="g1b-h6-FnF"/>
+                            <constraint firstItem="NuN-wL-FCO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="jcq-1I-XbS"/>
+                            <constraint firstItem="s6C-9O-d3O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x6h-lw-hgg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="撞臉度" id="a4i-cZ-PNo"/>
+                    <connections>
+                        <outlet property="containerView" destination="s6C-9O-d3O" id="RhN-BQ-IAS"/>
+                        <outlet property="leftContainer" destination="L3h-ht-EU8" id="M9h-jo-Pb8"/>
+                        <outlet property="privactyButton" destination="veq-xf-Gmc" id="RCa-qu-eTe"/>
+                        <outlet property="resultLabel" destination="w9x-wL-MFG" id="gvT-s6-xyy"/>
+                        <outlet property="rightContainer" destination="ALo-4F-Guj" id="4Qy-hj-B4x"/>
+                        <outlet property="shareButton" destination="NuN-wL-FCO" id="gKB-hq-JYe"/>
+                        <outlet property="textView" destination="nI2-Qz-zZx" id="hK3-hl-QRI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="batman" width="155" height="160"/>
+        <image name="flash" width="155" height="160"/>
+        <namedColor name="point">
+            <color red="0.96100002527236938" green="0.65100002288818359" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

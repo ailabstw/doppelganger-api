@@ -4,6 +4,7 @@
 
 ## Demo App 下載
 
+<a href='https://play.google.com/store/apps/details?id=tw.ailabs.doppelganger&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="256"/></a>
 
 ## API 說明
 
@@ -32,11 +33,13 @@ curl -X POST -F "left=@宋芸樺.jpg" -F "right=@夏于喬.jpg" https://api.aila
 
 ## HTTP Status 列表
 
-|     Status Code | 描述                   |
-| --------------: | :------------------- |
-|    **200 - OK** | 一切正常，應收到辨識結果         |
-|  **202 - 單張OK** | 已經收到一張圖片，需要再上傳另一邊的圖片 |
-| **415 -  格式錯誤** | 上傳了非 jpg 格式的檔案       |
+|         Status Code | 描述                   |
+| ------------------: | :------------------- |
+|        **200 - OK** | 一切正常，應收到辨識結果         |
+|      **202 - 單張OK** | 已經收到一張圖片，需要再上傳另一邊的圖片 |
+| **413 -  檔案大小超過上限** | 單張圖片大小上限為 10 MB      |
+|     **415 -  格式錯誤** | 上傳了非 jpg 格式的檔案       |
+|    **429 - 請求次數過多** | 超過單位時間內的請求上限值，請稍後再請求 |
 
  ## Example Response
 

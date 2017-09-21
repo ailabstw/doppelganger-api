@@ -1,0 +1,6 @@
+framework module Pods_FaceLike {
+  umbrella header "Pods-FaceLike-umbrella.h"
+
+  export *
+  module * { export * }
+}
