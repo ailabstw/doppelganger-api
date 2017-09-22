@@ -4,6 +4,8 @@
 
 ## Demo App 下載
 
+![app_icon](https://github.com/ailabstw/doppelganger-api/blob/master/Android-Example/web_hi_res_512.png)
+
 <a href='https://play.google.com/store/apps/details?id=tw.ailabs.doppelganger&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="256"/></a>
 
 ## API 說明
