@@ -8,6 +8,10 @@
 
 <a href='https://play.google.com/store/apps/details?id=tw.ailabs.doppelganger&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="256"/></a>
 
+<a href='https://itunes.apple.com/tw/app/%E6%92%9E%E8%87%89%E5%BA%A6/id1287365175?l=zh&mt=8'><img alt='Download from App Store' src='https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store-zh-tw.svg' width="228"/></a>
+
+
+
 ## API 說明
 
 透過 `form-data` 的 POST 方式上傳兩張照片以取得結果，你也可以一次只上傳一張，等到兩張都上傳完成時便可收到比較的結果，一次上人傳一張的功能需要 enable `session-cookie`，server 會以 session 來紀錄你的身分與狀態。
